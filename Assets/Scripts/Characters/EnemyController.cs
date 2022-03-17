@@ -105,7 +105,6 @@ public class EnemyController : MonoBehaviour
                 }
                 break;
             case EnemyStatus.CHASE:
-                // TODO: 配合动画
                 isWalk = false;
                 isChase = true;
 
@@ -135,7 +134,7 @@ public class EnemyController : MonoBehaviour
                     isFollow = true;
                     agent.isStopped = false;
                     agent.destination = attackTarget.transform.position;
-                    // TODO: 在攻击范围内则攻击
+                    // 在攻击范围内则攻击
                     if (TargetInSkillRange() || TargetInAttackRange())
                     {
                         isFollow = false;
@@ -226,5 +225,14 @@ public class EnemyController : MonoBehaviour
     {
         Gizmos.color = Color.blue;
         Gizmos.DrawWireSphere(transform.position, sightRadius);
+    }
+
+    void Hit()
+    {
+        if (attackTarget != null)
+        {
+            var targetStats = attackTarget.GetComponent<CharacterStats>();
+            targetStats.TakeDamage(characterStats, targetStats);
+        }
     }
 }
