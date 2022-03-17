@@ -8,6 +8,8 @@ public class PlayerController : MonoBehaviour
 {
     private NavMeshAgent agent;
     private Animator anim;
+    private CharacterStats characterStats;
+
     private GameObject attackTarget;
     private float lastAttackTime;
 
@@ -15,6 +17,8 @@ public class PlayerController : MonoBehaviour
     {
         agent = GetComponent<NavMeshAgent>();
         anim = GetComponent<Animator>();
+        characterStats = GetComponent<CharacterStats>();
+        characterStats.MaxHealth = 2;
     }
 
     void Start()
@@ -54,8 +58,7 @@ public class PlayerController : MonoBehaviour
     {
         agent.isStopped = false;
         agent.destination = attackTarget.transform.position;
-        // TODO:修改攻击范围参数
-        while (Vector3.Distance(attackTarget.transform.position, transform.position) > 1)
+        while (Vector3.Distance(attackTarget.transform.position, transform.position) > characterStats.attackData.attackRange)
         {
             yield return null;
         }
