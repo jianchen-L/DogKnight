@@ -2630,7 +2630,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 233387286}
-  m_LocalRotation: {x: 0.020994574, y: -0.021861792, z: 0.005627542, w: 0.9995247}
+  m_LocalRotation: {x: 0.020994583, y: -0.021861704, z: 0.0056275264, w: 0.9995247}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -62709,7 +62709,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 680076634}
-  m_LocalRotation: {x: 0.009068594, y: -0.021927373, z: 0.0053663296, w: 0.99970406}
+  m_LocalRotation: {x: 0.009068586, y: -0.021927334, z: 0.0053663217, w: 0.99970406}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -63062,7 +63062,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 729384422}
-  m_LocalRotation: {x: 0.045376033, y: -0.022423089, z: 0.006359271, w: 0.9986981}
+  m_LocalRotation: {x: 0.045376018, y: -0.022423059, z: 0.0063592633, w: 0.9986981}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -64468,8 +64468,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
-  m_LocalRotation: {x: 0.13497217, y: 0.12443259, z: -0.017087879, w: 0.9828566}
-  m_LocalPosition: {x: -11.518174, y: 5.579, z: -17.466736}
+  m_LocalRotation: {x: 0.13497216, y: 0.12443265, z: -0.017087886, w: 0.9828566}
+  m_LocalPosition: {x: -11.518175, y: 5.579, z: -17.466736}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -65642,7 +65642,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1191448601}
   m_LocalRotation: {x: 0.11394667, y: 0.14697877, z: -0.017047685, w: 0.9824066}
-  m_LocalPosition: {x: -11.518174, y: 5.579, z: -17.466736}
+  m_LocalPosition: {x: -11.518175, y: 5.579, z: -17.466736}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 729384424}
@@ -79002,6 +79002,10 @@ PrefabInstance:
     - target: {fileID: 580987796369495899, guid: 89cb07c5dd6c21840985cff1fdbf4994, type: 3}
       propertyPath: m_Name
       value: Slime
+      objectReference: {fileID: 0}
+    - target: {fileID: 582031834463153466, guid: 89cb07c5dd6c21840985cff1fdbf4994, type: 3}
+      propertyPath: isGuard
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 582031834463153466, guid: 89cb07c5dd6c21840985cff1fdbf4994, type: 3}
       propertyPath: lookAtTime
