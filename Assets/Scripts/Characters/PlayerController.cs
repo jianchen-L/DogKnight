@@ -25,11 +25,16 @@ public class PlayerController : MonoBehaviour
     {
         MouseManager.Instance.OnMouseClicked += MoveToTarget;
         MouseManager.Instance.OnEnemyClicked += EventAttack;
+        GameManager.Instance.RegisterPlayer(characterStats);
     }
 
     void Update()
     {
         isDead = characterStats.CurrentHealth == 0;
+        if (isDead)
+        {
+            GameManager.Instance.NotifyObservers();
+        }
         SwitchAnimation();
         lastAttackTime -= Time.deltaTime;
     }

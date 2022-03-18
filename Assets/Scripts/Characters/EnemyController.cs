@@ -6,7 +6,7 @@ using UnityEngine.AI;
 public enum EnemyStatus { GUARD, PATROL, CHASE, DEAD }
 
 [RequireComponent(typeof(NavMeshAgent))]
-public class EnemyController : MonoBehaviour
+public class EnemyController : MonoBehaviour, IEndGameObserver
 {
     private EnemyStatus enemyStatus;
     private NavMeshAgent agent;
@@ -35,6 +35,7 @@ public class EnemyController : MonoBehaviour
     private bool isChase;
     private bool isFollow;
     private bool isDead;
+    private bool playerDead;
 
     void Awake()
     {
@@ -59,6 +60,20 @@ public class EnemyController : MonoBehaviour
             enemyStatus = EnemyStatus.PATROL;
             GetNewWayPoint();
         }
+        // FIXME: 场景切换后修改
+        GameManager.Instance.AddObserver(this);
+    }
+
+    // 切换场景启用
+    // void OnEnable()
+    // {
+    //     GameManager.Instance.AddObserver(this);
+    // }
+
+    void OnDisable()
+    {
+        if (!GameManager.IsIntialized) return;
+        GameManager.Instance.RemoveObserver(this);
     }
 
     void Update()
@@ -67,9 +82,12 @@ public class EnemyController : MonoBehaviour
         {
             isDead = true;
         }
-        SwitchStatus();
-        SwitchAnimation();
-        lastAttackTime -= Time.deltaTime;
+        if (!playerDead)
+        {
+            SwitchStatus();
+            SwitchAnimation();
+            lastAttackTime -= Time.deltaTime;
+        }
     }
 
     void SwitchAnimation()
@@ -263,5 +281,17 @@ public class EnemyController : MonoBehaviour
             var targetStats = attackTarget.GetComponent<CharacterStats>();
             targetStats.TakeDamage(characterStats, targetStats);
         }
+    }
+
+    public void EndNotify()
+    {
+        // 获胜动画
+        // 停止所有移动
+        // 停止Agent
+        playerDead = true;
+        isChase = false;
+        isWalk = false;
+        attackTarget = null;
+        anim.SetBool("Win", true);
     }
 }
