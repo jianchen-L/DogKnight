@@ -20,7 +20,7 @@ public class EnemyController : MonoBehaviour, IEndGameObserver
     public float sightRadius;
     public bool isGuard;
     private float speed;
-    private GameObject attackTarget;
+    protected GameObject attackTarget;
     private Vector3 initPos;
     private Quaternion initRotation;
     public float lookAtTime;
