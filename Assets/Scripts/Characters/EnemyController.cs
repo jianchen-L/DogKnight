@@ -198,7 +198,9 @@ public class EnemyController : MonoBehaviour, IEndGameObserver
                 break;
             case EnemyStatus.DEAD:
                 coll.enabled = false;
-                agent.enabled = false;
+                // TODO: 为什么这样写会报错？
+                // agent.enabled = false;
+                agent.radius = 0;
                 Destroy(gameObject, 2f);
                 break;
         }
@@ -280,7 +282,7 @@ public class EnemyController : MonoBehaviour, IEndGameObserver
 
     void Hit()
     {
-        if (attackTarget != null)
+        if (attackTarget != null || transform.IsFacingTarget(attackTarget.transform))
         {
             var targetStats = attackTarget.GetComponent<CharacterStats>();
             targetStats.TakeDamage(characterStats, targetStats);
