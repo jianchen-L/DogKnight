@@ -34,6 +34,7 @@ public class PlayerController : MonoBehaviour
         if (isDead)
         {
             GameManager.Instance.NotifyObservers();
+            agent.enabled = false;
         }
         SwitchAnimation();
         lastAttackTime -= Time.deltaTime;

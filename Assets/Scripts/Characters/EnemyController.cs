@@ -6,6 +6,7 @@ using UnityEngine.AI;
 public enum EnemyStatus { GUARD, PATROL, CHASE, DEAD }
 
 [RequireComponent(typeof(NavMeshAgent))]
+[RequireComponent(typeof(CharacterStats))]
 public class EnemyController : MonoBehaviour, IEndGameObserver
 {
     private EnemyStatus enemyStatus;
@@ -270,8 +271,11 @@ public class EnemyController : MonoBehaviour, IEndGameObserver
 
     void OnDrawGizmosSelected()
     {
-        Gizmos.color = Color.blue;
-        Gizmos.DrawWireSphere(transform.position, sightRadius);
+        if (!isGuard)
+        {
+            Gizmos.color = Color.blue;
+            Gizmos.DrawWireSphere(transform.position, sightRadius);
+        }
     }
 
     void Hit()
