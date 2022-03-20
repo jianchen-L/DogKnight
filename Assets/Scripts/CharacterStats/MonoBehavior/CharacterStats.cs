@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class CharacterStats : MonoBehaviour
 {
+    public event Action<int, int> UpdateHealthBarOnAttack;
     public CharacterData_SO templateData;
     private CharacterData_SO characterData;
     public AttackData_SO attackData;
@@ -12,7 +13,8 @@ public class CharacterStats : MonoBehaviour
     [HideInInspector]
     public bool isCritical;
 
-    void Awake() {
+    void Awake()
+    {
         if (templateData != null)
         {
             characterData = Instantiate(templateData);
@@ -49,14 +51,22 @@ public class CharacterStats : MonoBehaviour
 
     public void TakeDamage(CharacterStats attacker, CharacterStats defender)
     {
-        int damage = Mathf.Max(attacker.CurrentDamage() - defender.CurrentDefence);
+        int damage = Mathf.Max(attacker.CurrentDamage() - defender.CurrentDefence, 0);
         CurrentHealth = Mathf.Max(CurrentHealth - damage, 0);
         if (attacker.isCritical)
         {
             defender.GetComponent<Animator>().SetTrigger("Hit");
         }
-        // TODO: Update UI
+        // Update UI
+        UpdateHealthBarOnAttack?.Invoke(CurrentHealth, MaxHealth);
         // TODO: 经验update
+    }
+
+    public void TakeDamage(int damage, CharacterStats defender)
+    {
+        int currentDamage = Mathf.Max(damage - defender.CurrentDefence, 0);
+        CurrentHealth = Mathf.Max(CurrentHealth - damage, 0);
+        UpdateHealthBarOnAttack?.Invoke(CurrentHealth, MaxHealth);
     }
 
     private int CurrentDamage()

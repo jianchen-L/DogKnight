@@ -7,6 +7,7 @@ public enum EnemyStatus { GUARD, PATROL, CHASE, DEAD }
 
 [RequireComponent(typeof(NavMeshAgent))]
 [RequireComponent(typeof(CharacterStats))]
+[RequireComponent(typeof(HealthBarUI))]
 public class EnemyController : MonoBehaviour, IEndGameObserver
 {
     private EnemyStatus enemyStatus;

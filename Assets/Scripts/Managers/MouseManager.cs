@@ -24,6 +24,7 @@ public class MouseManager : Singleton<MouseManager>
             // 切换贴图
             switch (hitInfo.collider.gameObject.tag)
             {
+                case "Attackable":
                 case "Ground":
                     Cursor.SetCursor(target, new Vector2(16, 16), CursorMode.Auto);
                     break;
@@ -42,8 +43,11 @@ public class MouseManager : Singleton<MouseManager>
             {
                 OnMouseClicked?.Invoke(hitInfo.point);
             }
-            
             if (hitInfo.collider.gameObject.CompareTag("Enemy"))
+            {
+                OnEnemyClicked?.Invoke(hitInfo.collider.gameObject);
+            }
+            if (hitInfo.collider.gameObject.CompareTag("Attackable"))
             {
                 OnEnemyClicked?.Invoke(hitInfo.collider.gameObject);
             }

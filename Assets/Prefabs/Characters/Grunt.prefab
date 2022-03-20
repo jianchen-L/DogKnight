@@ -1,5 +1,35 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &5634692891179340142
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 9164218571876599262}
+  m_Layer: 7
+  m_Name: HealthBarPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &9164218571876599262
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5634692891179340142}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 2.7, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 8284946073377453522}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8284946071718477012
 GameObject:
   m_ObjectHideFlags: 0
@@ -709,6 +739,7 @@ GameObject:
   - component: {fileID: 8284946073559604177}
   - component: {fileID: 8284946073559604182}
   - component: {fileID: 8284946073559604183}
+  - component: {fileID: 2712756923407043814}
   m_Layer: 7
   m_Name: Grunt
   m_TagString: Enemy
@@ -729,6 +760,7 @@ Transform:
   m_Children:
   - {fileID: 8284946072065768872}
   - {fileID: 8284946071916522037}
+  - {fileID: 9164218571876599262}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: -102.273, z: 0}
@@ -818,6 +850,22 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!114 &2712756923407043814
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8284946073377453612}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2149c49ee19b1574daaf9862aee09e85, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  healthUIPrefab: {fileID: 2425057415334476809, guid: fa36c5537b453bd43bb6d10bd28ad2ab, type: 3}
+  alwaysVisible: 0
+  visibleTime: 0
+  barPoint: {fileID: 9164218571876599262}
 --- !u!1 &8284946073422546963
 GameObject:
   m_ObjectHideFlags: 0
