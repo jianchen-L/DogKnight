@@ -67,7 +67,7 @@ public class PlayerController : MonoBehaviour
     {
         agent.isStopped = false;
         agent.destination = attackTarget.transform.position;
-        while (Vector3.Distance(attackTarget.transform.position, transform.position) > characterStats.attackData.attackRange)
+        while (Vector3.Distance(attackTarget.transform.position, transform.position) - attackTarget.GetComponent<NavMeshAgent>().radius > characterStats.attackData.attackRange)
         {
             yield return null;
         }
